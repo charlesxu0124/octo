@@ -114,6 +114,7 @@ class OctoTransformer(nn.Module):
 
         Note: Horizon can be anything <= max_horizon.
         """
+        # breakpoint()
         if readouts is None:
             readouts = list(self.readouts.keys())
 

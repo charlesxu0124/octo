@@ -967,6 +967,10 @@ def mujoco_manip_dataset_transform(trajectory: Dict[str, Any]) -> Dict[str, Any]
     )
     return trajectory
 
+def connector_insert_transform(trajectory: Dict[str, Any]) -> Dict[str, Any]:
+    trajectory["action"] = trajectory["eef_action"]
+    trajectory["observation"]["proprio"] = tf.zeros((7))
+    return trajectory
 
 OXE_STANDARDIZATION_TRANSFORMS = {
     "bridge_dataset": bridge_dataset_transform,

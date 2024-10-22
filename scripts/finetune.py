@@ -283,10 +283,10 @@ def main(_):
 
     # Data parallelism
     # Model is replicated across devices, data is split across devices
-    @partial(
-        jax.jit,
-        in_shardings=[replicated_sharding, dp_sharding],
-    )
+    # @partial(
+    #     jax.jit,
+    #     in_shardings=[replicated_sharding, dp_sharding],
+    # )
     def train_step(state: TrainState, batch):
         rng, dropout_rng = jax.random.split(state.rng)
         (loss, info), grads = jax.value_and_grad(loss_fn, has_aux=True)(
